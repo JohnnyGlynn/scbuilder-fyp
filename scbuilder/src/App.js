@@ -1,25 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Web3 from 'web3-eth';
+import Web3 from 'web3';
+import Eth from 'web3-eth';
 
 function App() {
 
-  const winEth = window.ethereum
-  const eth = new Web3;
+  const ethereum = window.ethereum
+  // eth.setProvider(new eth.providers.HttpProvider());
 
 
-  if(winEth !== 'undefined'){
+  if(ethereum !== 'undefined'){
     console.log("Metamask is installed")
   }
 
   async function metamask(e){
-    if (winEth) {
-      window.web3 = new Web3(winEth);
-      winEth.enable();
+    if (ethereum) {
+      const web3 = new Web3(ethereum);
+      const currentAccount = await ethereum.enable()
+
+      var account = await web3.eth.getAccounts();
+      console.log(account)
     }
-    var accounts = eth.getAccounts();
-    console.log(accounts);
   }
   
 
