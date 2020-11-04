@@ -17,7 +17,7 @@ function App() {
   async function metamask(e){
     if (ethereum) {
       const web3 = new Web3(ethereum);
-      const currentAccount = await ethereum.enable()
+      // const currentAccount = await ethereum.enable()
 
       var account = await web3.eth.getAccounts();
       console.log(account)
