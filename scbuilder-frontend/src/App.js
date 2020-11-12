@@ -7,7 +7,7 @@ import Eth from 'web3-eth';
 function App() {
 
   const ethereum = window.ethereum
-  // eth.setProvider(new eth.providers.HttpProvider());
+  //eth.setProvider(new eth.providers.HttpProvider());
 
 
   if(ethereum !== 'undefined'){
@@ -17,11 +17,22 @@ function App() {
   async function metamask(e){
     if (ethereum) {
       const web3 = new Web3(ethereum);
-      // const currentAccount = await ethereum.enable()
+      const currentAccount = await ethereum.enable()
 
       var account = await web3.eth.getAccounts();
       console.log(account)
     }
+  }
+
+  function generateSmartContract(){
+    fetch('http://localhost:10000/scgen',{
+      method: 'GET'})
+    .then(response => {
+            console.log(response)
+    })
+    .catch((error) => {
+        console.log("Im an error " + error)
+    });
   }
   
 
@@ -33,6 +44,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <button onClick={metamask}>Enable Ethereum</button>
+        <button onClick={generateSmartContract}>generateSmartContract</button>
         <a
           className="App-link"
           href="https://reactjs.org"
