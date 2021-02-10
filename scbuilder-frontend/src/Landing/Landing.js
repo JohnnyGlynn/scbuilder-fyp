@@ -1,24 +1,24 @@
 import React from 'react';
 import './Landing.css';
-import {makeStyles, Button, InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
+// import {makeStyles, Button, InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
 
-const styles = makeStyles(() => ({
-  menuButton: {
-    fontFamily: "Helvetica",
-    fontWeight: 700,
-    size: "18px",
-    marginLeft: "38px",
-  },
-  formControl: {
-  color: "0000000",
-  margin: "5vh",
-  minWidth: 120,
-  },
-}));
+// const styles = makeStyles(() => ({
+//   menuButton: {
+//     fontFamily: "Helvetica",
+//     fontWeight: 700,
+//     size: "18px",
+//     marginLeft: "38px",
+//   },
+//   formControl: {
+//   color: "0000000",
+//   margin: "5vh",
+//   minWidth: 120,
+//   },
+// }));
 
 function Landing() {
 
-  const {menuButton, formControl} = styles();
+  // const {menuButton, formControl} = styles();
   const [contract, setContract] = React.useState('Contract');
 
   const handleChange = (event) => {
@@ -28,7 +28,7 @@ function Landing() {
   var contractSelect = () => {
     return(
       <div>
-        <FormControl color="secondary" className={formControl}>
+        {/* <FormControl color="secondary" className={formControl}>
         <InputLabel color="secondary" id="contract-select">Contract Type</InputLabel>
         <Select
           labelId="contract-select"
@@ -40,7 +40,7 @@ function Landing() {
           <MenuItem color="secondary" value={"contract"}>simple contract</MenuItem>
           <MenuItem color="secondary" value={"subcurrency"}>sub-currency</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       </div>
     );
   };
@@ -77,7 +77,7 @@ function Landing() {
     <body className = "Landing-body">
       <div>
         <div>{contractSelect()}</div>
-        <Button variant="contained" color="primary" onClick={generateSmartContract} className={menuButton}>Generate Smart-Contract</Button>
+        {/* <Button variant="contained" color="primary" onClick={generateSmartContract} className={menuButton}>Generate Smart-Contract</Button> */}
       </div>
     </body>
   )
