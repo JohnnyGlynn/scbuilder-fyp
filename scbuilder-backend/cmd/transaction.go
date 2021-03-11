@@ -47,12 +47,12 @@ func test_transaction(){
 	}
 
 	privateKey, err := crypto.HexToECDSA(os.Getenv("TESTNET_BACKEND_WALLET_PRIVATE_KEY"))
-	fmt.Print("got private key from: ", os.Getenv("TESTNET_BACKEND_WALLET_PRIVATE_KEY"), "\n")
+	//fmt.Print("got private key from: ", os.Getenv("TESTNET_BACKEND_WALLET_PRIVATE_KEY"), "\n")
 	if err != nil {
-		fmt.Print("unable to get", err)
+		fmt.Print("unable to get private key", err)
 	}
 
-	fmt.Print(privateKey)
+	//fmt.Print(privateKey)
 
 	publicKey := privateKey.Public()//Public of Private
 	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
