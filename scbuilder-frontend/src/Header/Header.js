@@ -1,31 +1,8 @@
 import React, {useState} from 'react';
-// import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
-import './Header.css';
 import Web3 from 'web3';
 
-// const styles = makeStyles(() => ({
-//   header: {
-//     backgroundColor: "#006400",
-//   },
-//   logo: {
-//     fontFamily: "Helvetica",
-//     fontWeight: 600,
-//     color: "white",
-//     textAlign: "left",
-//   },
-//   menuButton: {
-//     fontFamily: "Helvetica",
-//     fontWeight: 700,
-//     size: "18px",
-//     marginLeft: "38px",
-//  },
-// }));
-
 export default function Header() {
-
-  // const {header, logo, menuButton} = styles();
   const [account, setAccount] = useState("Metamask not connected!");
-
   const ethereum = window.ethereum
 
   if(ethereum !== 'undefined'){
@@ -43,27 +20,36 @@ export default function Header() {
     }
   }
 
-  var displayDesktop = () => {
-    return(
-      // <Toolbar>
-      //   {Logo}
-      //   <Button variant="contained" color="secondary" onClick={metamask} className={menuButton}>Enable Ethereum</Button>
-      //   <div className={menuButton}><h1> Wallet Address: {account}</h1></div>
-      // </Toolbar>
-      <div></div>
-    );
-  };
-
-  const Logo = (
-    // <Typography variant="h6" component="h1" className={logo}>
-    //   SC-Builder
-    // </Typography>
-    <div></div>
-  );
-
   return (
-    <header>
-      {/* <AppBar className={header}>{displayDesktop()}</AppBar> */}
-    </header>
+  <div>
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+              <img src="/scbuilderbig.png" alt="Scbuilder logo" width="112" height="28"/>
+            </a>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item">
+                Home
+              </a>
+
+              <a class="navbar-item">
+                Generator
+              </a>
+            </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                <div ><h1 style={{paddingRight: "5px"}}> Wallet Address: {account}</h1></div>
+                <button class="button" color="secondary" onClick={metamask}>Connect Web3 Wallet</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+  </div>
   );
 };
