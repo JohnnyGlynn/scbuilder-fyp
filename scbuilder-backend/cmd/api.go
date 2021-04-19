@@ -45,9 +45,10 @@ func scGen(w http.ResponseWriter, r *http.Request){
 }
 
 func handleRequests() {
-	//http.HandleFunc("/", root)
-	//http.HandleFunc("/scgen", scGen)
-	//log.Fatal(http.ListenAndServe(":10000", nil))
+	fmt.Println("Listening on port 10000" )
+	http.HandleFunc("/", root)
+	http.HandleFunc("/scgen", scGen)
+	log.Fatal(http.ListenAndServe(":10000", nil))
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", root)
@@ -55,4 +56,6 @@ func handleRequests() {
 
 	err := http.ListenAndServe(":10000", mux)
 	log.Fatal(err)
+	//inter.ContractGenerate()
+
 }
