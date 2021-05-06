@@ -5,7 +5,7 @@ import (
 )
 
 func ContractGenerate() {
-	d1 := []byte("pragma solidity ^0.4.0;" +
+	d1 := []byte("pragma solidity ^0.5.0;" +
 		"\n" +
 		"\ncontract SimpleStorage {" +
 		"\n    uint storedData;" +
@@ -16,7 +16,7 @@ func ContractGenerate() {
 		"\n        return storedData;" +
 		"\n    }" +
 		"\n}")
-	err := ioutil.WriteFile("/tmp/contract.sol", d1, 0644)
+	err := ioutil.WriteFile("/tmp/contracts/contract.sol", d1, 0644)
 	check(err)
 }
 

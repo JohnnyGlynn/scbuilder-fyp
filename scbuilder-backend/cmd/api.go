@@ -34,13 +34,14 @@ func scGen(w http.ResponseWriter, r *http.Request){
 	}
 
 	fmt.Fprintf(w, "Contract choice: %+v", contract)
-	fmt.Printf( "Contract choice: %+v", contract)
+	fmt.Printf( "Contract choice: %+v \n", contract)
 
 	switch (contract){
-	case "contract":
-		inter.ContractGenerate()
+	case "Contract":
+		//inter.ContractGenerate()
+		inter.Contract()
 	case "subcurrency":
-		inter.SubCurrencyGenerate()
+		inter.Subcurrency()
 	}
 }
 

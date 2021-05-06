@@ -100,10 +100,10 @@ function Landing() {
 
   return (
     // <body>
-    //   <div>
-    //     <div>{contractSelect()}</div>
-    //     {/* <Button variant="contained" color="primary" onClick={generateSmartContract} className={menuButton}>Generate Smart-Contract</Button> */}
-    //   </div>
+      // <div>
+      //   <div>{contractSelect()}</div>
+      //   {/* <Button variant="contained" color="primary" onClick={generateSmartContract} className={menuButton}>Generate Smart-Contract</Button> */}
+      // </div>
     // </body>
     <div class="box is-secondary">
       <article class="panel is-primary">
@@ -115,6 +115,10 @@ function Landing() {
           <a>Contract</a>
           <a>Sub-currency</a>
         </p>
+        <div>
+          <div>{contractSelect()}</div>
+        {/* <Button variant="contained" color="primary" onClick={generateSmartContract} className={menuButton}>Generate Smart-Contract</Button> */}
+      </div>
         <div class="panel-block">
           <p class="control has-icons-left">
             <input class="input is-primary" type="text" placeholder="Search"/>
@@ -123,7 +127,8 @@ function Landing() {
             </span>
           </p>
         </div>
-        <button class="button is-secondary" style={{padding: "5px"}} onClick={() => send()}>
+        {/* <button class="button is-secondary" style={{padding: "5px"}} onClick={() => send()}> */}
+        <button class="button is-secondary" style={{padding: "5px"}} onClick={generateSmartContract}>
           Send Transaction
         </button>
       </article>
