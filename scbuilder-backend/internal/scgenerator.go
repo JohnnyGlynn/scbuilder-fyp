@@ -11,39 +11,36 @@ func check(e error) {
 	}
 }
 
-func Contract(){
-	//init directory
-	cmd := exec.Command("mkdir", "/tmp/contracts")
-	_, err := cmd.Output()
-	if err != nil {
-		fmt.Println("error")
-		fmt.Println(err)
-		return
-	}
+func Contract() string {
 	//generate file
 	ContractGenerate()
 	//compile smart contract
-	shell := exec.Command("/bin/sh", "truffle.sh")
+	shell := exec.Command("/bin/sh", "contract.sh")
 	//cmd := exec.Command("pwd", "pwd" )
-	fmt.Println("running shell script")
+	fmt.Println("Compiling & deploying Contract")
 	out, err := shell.Output()
 	if err != nil {
-		fmt.Println("error")
-		fmt.Println(err)
-		return
+		fmt.Println("Shell Error")
+		fmt.Println(err.Error())
+		return err.Error()
 	}
-	fmt.Println(string(out))
-	//deploy smart contract to infura
-
-	//transfer ownership
+	fmt.Println("Transaction Hash: " + string(out))
+	return string(out)
 }
 
-func Subcurrency(){
+func Subcurrency() string{
 	//generate file
 	SubCurrencyGenerate()
 	//compile smart contract
-
-	//deploy smart contract to infura
-
-	//transfer ownership
+	shell := exec.Command("/bin/sh", "subcurrency.sh")
+	//cmd := exec.Command("pwd", "pwd" )
+	fmt.Println("Compiling & deploying Subcurrency")
+	out, err := shell.Output()
+	if err != nil {
+		fmt.Println("Shell Error")
+		fmt.Println(err.Error())
+		return err.Error()
+	}
+	fmt.Println("Transaction Hash: " + string(out))
+	return string(out)
 }

@@ -9,10 +9,6 @@ import (
 	inter "scbuilder-backend/internal"
 )
 
-//type Contract struct {
-//	contract string `json:"contract,omitempty"`
-//}
-
 func root(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "Root alive and well")
 	fmt.Println("Endpoint Hit: /")
@@ -22,7 +18,7 @@ func scGen(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
 	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Accept, Authorization")
-	fmt.Fprintf(w, "generating smart contract")
+	//fmt.Fprintf(w, "generating smart contract")
 
 	var contract = ""
 	log.Printf("%+v", contract)
@@ -33,15 +29,21 @@ func scGen(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	fmt.Fprintf(w, "Contract choice: %+v", contract)
+	//fmt.Fprintf(w, "Contract choice: %+v", contract)
 	fmt.Printf( "Contract choice: %+v \n", contract)
 
 	switch (contract){
 	case "Contract":
 		//inter.ContractGenerate()
-		inter.Contract()
-	case "subcurrency":
-		inter.Subcurrency()
+		tx := inter.Contract()
+		//fmt.Fprintf(w, "%+v", tx)
+		jTx, _:= json.Marshal(tx)
+		w.Write(jTx)
+	case "Subcurrency":
+		tx := inter.Subcurrency()
+		//fmt.Fprintf(w, "%+v", tx)
+		jTx, _:= json.Marshal(tx)
+		w.Write(jTx)
 	}
 }
 
@@ -57,6 +59,4 @@ func handleRequests() {
 
 	err := http.ListenAndServe(":10000", mux)
 	log.Fatal(err)
-	//inter.ContractGenerate()
-
 }

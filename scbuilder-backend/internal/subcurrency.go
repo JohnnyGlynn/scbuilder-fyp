@@ -3,9 +3,9 @@ package internal
 import (
 	"io/ioutil"
 )
-
+//adapted from https://docs.soliditylang.org/en/v0.4.24/introduction-to-smart-contracts.html
 func SubCurrencyGenerate() {
-	d1 := []byte("pragma solidity ^0.4.21;" +
+	d1 := []byte("pragma solidity ^0.5.0;" +
 		"\n\ncontract Coin {" +
 		"\n    // The keyword \"public\" makes those variables" +
 		"\n    // readable from outside." +
@@ -16,7 +16,7 @@ func SubCurrencyGenerate() {
 		"\n    event Sent(address from, address to, uint amount);" +
 		"\n\n    // This is the constructor whose code is" +
 		"\n    // run only when the contract is created." +
-		"\n    function Coin() public {" +
+		"\n    constructor (bytes32 Coin) public {" +
 		"\n        minter = msg.sender;" +
 		"\n    }" +
 		"\n\n    function mint(address receiver, uint amount) public {" +
@@ -30,6 +30,6 @@ func SubCurrencyGenerate() {
 		"\n        emit Sent(msg.sender, receiver, amount);" +
 		"\n    }" +
 		"\n}")
-	err := ioutil.WriteFile("/tmp/subcurrency.sol", d1, 0644)
+	err := ioutil.WriteFile("/tmp/contracts/contracts/subcurrency.sol", d1, 0644)
 	check(err)
 }
