@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import { NavLink } from "react-router-dom";
 import Web3 from 'web3';
 
 export default function Header() {
   const [account, setAccount] = useState("Metamask not connected!");
+  const [open, setOpen] = useState(false);
   const ethereum = window.ethereum
 
   if(ethereum !== 'undefined'){
@@ -11,9 +13,10 @@ export default function Header() {
 
   async function metamask(e){
     if (ethereum) {
+      //metamask connection
       const web3 = new Web3(ethereum);
       const currentAccount = await ethereum.enable()
-
+      //metamask account details
       var data = await web3.eth.getAccounts();
       setAccount(data);
       console.log(account)
@@ -31,20 +34,35 @@ export default function Header() {
 
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item">
-                Home
-              </a>
+            <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/"
+            >
+              Home
+            </NavLink>
 
-              <a class="navbar-item">
-                Generator
-              </a>
+            <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/generator"
+            >
+              Generator
+            </NavLink>
             </div>
 
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
                 <div ><h1 style={{paddingRight: "5px"}}> Wallet Address: {account}</h1></div>
+                {
+                account === "Metamask not connected!" &&
                 <button class="button" color="secondary" onClick={metamask}>Connect Web3 Wallet</button>
+                }
+                {
+                account !== "Metamask not connected!" &&
+                <button class="button" color="secondary" onClick={metamask}>Wallet connected</button>
+                }
                 </div>
               </div>
             </div>

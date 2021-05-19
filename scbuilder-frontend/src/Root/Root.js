@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 import './Root.css';
 
 import Landing from "../Landing/Landing"
 import Header from "../Header/Header"
+import Generator from "../Generator/Generator"
 
 class Root extends Component{
   constructor(props){
@@ -19,12 +21,19 @@ class Root extends Component{
   
   render(){
       return(
-          <div>      
-              {/* <Child1 functionCallFromParent={this.parentFunction.bind(this)}/> */}
-              {/* <Child2 valueFromParent={this.state.value_key}/> */}
-              <Header/>
-              <Landing />
+        <BrowserRouter>
+          <Header />
+          <div className="container" style={{height: 1000, paddingTop: 200}}>
+            <Switch>
+              <Route exact path="/">
+                <Landing />
+              </Route>
+              <Route path="/generator">
+                <Generator />
+              </Route>
+            </Switch>
           </div>
+        </BrowserRouter>
       );
   }
 }
